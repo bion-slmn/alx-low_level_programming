@@ -1,15 +1,14 @@
 #include <stdio.h>
 
 /**
- * main - printing locase in reverse using putchar
- *
- * return 0 is good
+ * main - Entry
+ * Return: 0 (Success)
  */
 int main(void)
 {
 	int sol;
 
-	for (sol = 'z'; sol >= 'a'; sol++)
+	for (sol = 'z'; sol >= 'a'; sol--)
 	{
 		putchar(sol);
 	}
