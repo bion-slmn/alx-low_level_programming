@@ -1,5 +1,8 @@
 #include <stdio.h>
-/* removing e and q from alphabet in lower case */
+/**
+ *The main is the starting point
+ * removing e and q from alphabet in lower case 
+ */
 int main(void)
 {
 	int ch;
