@@ -2,7 +2,9 @@
 
 /**
  * factorial - find the factorial of n.
- * @n - in the interger.
+ * @n: - in the interger.
+ *
+ * Return: and integer
  */
 int factorial(int n)
 {
