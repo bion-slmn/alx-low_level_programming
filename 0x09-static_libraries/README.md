@@ -1,2 +1,1 @@
-this project is about static libraries.
-
+This project is for static libraries.
