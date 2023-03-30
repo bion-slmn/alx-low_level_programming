@@ -5,7 +5,7 @@
  * print_list - prints the data in node
  * @h: is the pointer to the head.
  *
- * Return: the number of nodes 
+ * Return: the number of nodes
  */
 size_t print_list(const list_t *h)
 {
@@ -20,8 +20,8 @@ size_t print_list(const list_t *h)
 			printf("[0] (nil)\n");
 		else
 		{
-			printf("[%u] ",h->len);
-			printf("%s\n",h->str);
+			printf("[%u] ", h->len);
+			printf("%s\n", h->str);
 		}
 		count++;
 		h = h->next;
