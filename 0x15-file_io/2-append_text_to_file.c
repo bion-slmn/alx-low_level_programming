@@ -37,7 +37,9 @@ int append_text_to_file(const char *filename, char *text_content)
 	if (fd == -1)
 		return (-1);
 
-	count = write(fd, text_content, strlength(text_content));
+	if (text_content)
+		count = write(fd, text_content, strlength(text_content));
+
 	if (count == -1)
 	{
 		close(fd);
