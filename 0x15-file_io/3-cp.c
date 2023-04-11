@@ -28,39 +28,43 @@ void close_file(int fd)
  * @argc: the argument count number.
  * @argv: array holding the arguments
  *
- * Return : 0 if succes.
+ * Return: 0 if succes.
  */
 int main(int argc, char *argv[])
 {
-        int fd, fd1, count, nread;
-        char buffer[1024];
+	int fd, fd1, count, nread;
+	char buffer[1024];
 
-        if (argc != 3)
-        {
-                dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
-                exit (97);
-        }
+	if (argc != 3)
+	{
+		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
+		exit(97);
+	}
 
+	fd = open(argv[1], O_RDONLY);
+	if (fd == -1 || !argv[1])
+	{
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+		exit(98);
+	}
 
-        fd = open(argv[1], O_RDONLY);
-        if (fd == -1 || !argv[1])
-        {
-                dprintf(STDERR_FILENO,"Error: Can't read from file %s\n", argv[1]);
-                exit (98);
-        }
+	fd1 = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
 
-        fd1 = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
-
-        while ((nread = read(fd, buffer, sizeof(buffer))) > 0 )
-        {
-                count = write(fd1, buffer, nread);
-                if (count == -1 || fd1 == -1 || !argv[2])
-                        {
-                                dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
-                                exit (99);
-                        }
-        }
-        close(fd);
-        close(fd1);
-        return (0);
+	while ((nread = read(fd, buffer, sizeof(buffer))) > 0)
+	{
+		count = write(fd1, buffer, nread);
+		if (count == -1 || fd1 == -1 || !argv[2])
+			{
+				dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
+				exit(99);
+			}
+	}
+	if (nread == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+		exit(98);
+	}
+	close(fd);
+	close(fd1);
+	return (0);
 }
