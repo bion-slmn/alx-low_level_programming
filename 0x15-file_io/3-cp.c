@@ -53,7 +53,7 @@ int main(int argc, char *argv[])
 	while ((nread = read(fd, buffer, sizeof(buffer))) > 0)
 	{
 		count = write(fd1, buffer, nread);
-		if (count == -1 || fd1 == -1 || !argv[2])
+			if (count == -1 || fd1 == -1 || !argv[2])
 			{
 				dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 				exit(99);
