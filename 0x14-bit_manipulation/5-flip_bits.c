@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stddef.h>
 
 /**
  * flip_bits - calculates the number of bits you would need to flip
@@ -12,8 +13,8 @@ unsigned int flip_bits(unsigned long int n, unsigned long int m)
 {
 	unsigned int count = 0, flipped_no;
 
-	if (n == NULL || m == NULL)
-		return (NULL);
+	if (n == 0 || m == 0)
+		return (0);
 
 	flipped_no = n ^ m;
 
