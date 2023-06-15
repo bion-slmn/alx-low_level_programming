@@ -17,7 +17,7 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 		return (NULL);
 	node->n = n;
 
-	if (*h == NULL)
+	if (*h == NULL || idx == 0)
 		return (add_dnodeint(h, n));
 
 	while (i < idx - 1)
