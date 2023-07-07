@@ -46,9 +46,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		else
 		{
 			resolve_collusion = handle_collusion(current_node, item);
-			if (resolve_collusion)
-				return (1);
-			return (0);
+			return (1);
 		}
 	}
 }
