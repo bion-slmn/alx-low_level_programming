@@ -16,7 +16,6 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	hash_node_t *item = create_item(key, value);
 	unsigned long int index = key_index((const unsigned char *)key, ht->size);
 	hash_node_t *current_node;
-	int resolve_collusion;
 
 	if (ht == NULL || key == NULL || *key == '\0' || value == NULL || !item)
 		return (0);
@@ -45,7 +44,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		}
 		else
 		{
-			resolve_collusion = handle_collusion(current_node, item);
+			handle_collusion(current_node, item);
 			return (1);
 		}
 	}
