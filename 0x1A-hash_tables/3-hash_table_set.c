@@ -86,7 +86,7 @@ int handle_collusion(hash_node_t *head, hash_node_t *item)
 		return (2);
 	}
 
-	while (temp)
+	while (temp->next)
 		temp =  temp->next;
 
 	temp->next = item;
