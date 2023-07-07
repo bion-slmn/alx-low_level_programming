@@ -69,24 +69,19 @@ void free_item(hash_node_t *item)
  */
 int handle_collusion(hash_node_t *head, hash_node_t *item)
 {
-	hash_node_t *temp = head;
 
 	if (!head)
 	{	head = item;
 		return (1);
 	}
 
-	if (head->next == NULL)
+	if (head)
 	{
-		head->next = item;
+		item->next = head;
+		head = item;
 		return (2);
 	}
-
-	while (temp->next)
-		temp =  temp->next;
-
-	temp->next = item;
-	return (3);
+	return (1);
 }
 
 /**
