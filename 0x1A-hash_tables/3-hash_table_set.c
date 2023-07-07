@@ -19,10 +19,10 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	hash_node_t *current_node;
 
 	current_node = ht->array[index];
-
+	if (!item)
+		return (0);
 	if (!current_node)
 	{
-		/*the hasd table is full*/
 		if (index == ht->size)
 			return (0);
 		ht->array[index] = item;
@@ -105,14 +105,20 @@ hash_node_t *create_item(const char *key, const char *value)
 	hash_node_t *item;
 
 	item = malloc(sizeof(hash_node_t));
+	if (!item)
+		return (NULL);
 	item->key = malloc(sizeof(char) * (strlen(key) + 1));
+	if (!item->key)
+	{
+		free(item);
+		return (NULL);
+	}
 
 	item->value = malloc(sizeof(char) * (strlen(value) + 1));
 
-	if (!item->value || !item->key || !item)
+	if (!item->value)
 	{
 		free(item->key);
-		free(item->value);
 		free(item);
 		return (NULL);
 	}
