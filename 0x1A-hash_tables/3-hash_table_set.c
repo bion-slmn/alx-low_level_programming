@@ -44,7 +44,8 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		}
 		else
 		{
-			handle_collusion(current_node, item);
+			item->next = current_node;
+			ht->array[index] = item;
 			return (1);
 		}
 	}
@@ -98,14 +99,14 @@ hash_node_t *create_item(const char *key, const char *value)
 	item = malloc(sizeof(hash_node_t));
 	if (!item)
 		return (NULL);
-	item->key = malloc(sizeof(char) * (strlen(key) + 1));
+	item->key = strdup(key);
 	if (!item->key)
 	{
 		free(item);
 		return (NULL);
 	}
 
-	item->value = malloc(sizeof(char) * (strlen(value) + 1));
+	item->value = strdup(value);
 
 	if (!item->value)
 	{
@@ -115,8 +116,6 @@ hash_node_t *create_item(const char *key, const char *value)
 	}
 
 	item->next = NULL;
-	strcpy(item->key, key);
-	strcpy(item->value, value);
 
 	return (item);
 }
