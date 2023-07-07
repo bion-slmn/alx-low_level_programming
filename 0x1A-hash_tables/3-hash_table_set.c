@@ -15,16 +15,15 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 	hash_node_t *item = create_item(key, value);
 	unsigned long int index = key_index((const unsigned char *)key, ht->size);
-	int resolve_collusion;
 	hash_node_t *current_node;
+	int resolve_collusion;
 
-	current_node = ht->array[index];
-	if (!item)
+	if (ht == NULL || key == NULL || *key == '\0' || value == NULL || !item)
 		return (0);
+	current_node = ht->array[index];
+
 	if (!current_node)
 	{
-		if (index == ht->size)
-			return (0);
 		ht->array[index] = item;
 		return (1);
 	}
@@ -35,7 +34,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		{
 			free(current_node->value);
 			current_node->value = malloc(strlen(value) + 1);
-			if (!current_node)
+			if (!current_node->value)
 			{
 				free_item(current_node);
 				return (0);
