@@ -29,7 +29,7 @@ def island_perimeter(grid):
                 # check top neighbor
                 if row > 0 and grid[row - 1][col]:
                     square_peri -= 1
-                
+
                 perimeter += square_peri
 
     return perimeter
