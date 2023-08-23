@@ -13,7 +13,7 @@ def island_perimeter(grid):
                 square_peri = 4
 
                 # check if right neighbor cell present
-                if col < len(grid[row]) - 1 and grid[row][col + 1]:
+                if col < len(grid[row]) - 2 and grid[row][col + 1]:
                     square_peri -= 1
 
                 # check left negbor cell
@@ -21,7 +21,7 @@ def island_perimeter(grid):
                     square_peri -= 1
 
                 # check bottom  negbor
-                if row < len(grid) - 1 and grid[row + 1][col]:
+                if row < len(grid) - 2 and grid[row + 1][col]:
                     square_peri -= 1
 
                 # check top neighbor
