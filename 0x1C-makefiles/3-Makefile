@@ -1,0 +1,31 @@
+# containg variable and dependency tree
+
+CC = gcc
+SRC = main.c school.c
+OBJ = $(SRC:.c=.o)
+NAME = school
+RM = rm
+
+all: $(NAME)
+
+$(NAME): $(OBJ)
+	$(CC) $(OBJ) -o $@
+
+%.o: %.c
+	$(CC) -c $< -o $@
+
+.PHONY: clean oclean fclean re
+
+#deleting all temp files and executable
+clean:
+	$(RM) -f *~ $(NAME)
+
+#deleting object files
+oclean:
+	$(RM) -f $(OBJ)
+
+#deletes all Emacs and Vim temporary files, the executable, and the object files
+fclean: clean oclean
+
+#forces recompilation of all source files
+re: oclean all
