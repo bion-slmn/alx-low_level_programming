@@ -5,29 +5,31 @@
 def island_perimeter(grid):
     '''this is the function that calcualtes the perimenter of a grid'''
     perimeter = 0
-    for row in range(len(grid)):
-        for col in range(len(grid[row])):
+    rows = len(grid)
+    cols = len(grid[0])
+    for row in range(rows):
+        for col in range(cols):
             square_peri = 0
 
-            if grid[row][col]:
+            if grid[row][col] == 1:
                 square_peri = 4
 
                 # check if right neighbor cell present
-                if col < len(grid[row]) - 2 and grid[row][col + 1]:
+                if col < cols - 1 and grid[row][col + 1] == 1:
                     square_peri -= 1
 
                 # check left negbor cell
-                if col != 0 and grid[row][col - 1]:
+                if col > 0 and grid[row][col - 1] == 1:
                     square_peri -= 1
 
                 # check bottom  negbor
-                if row < len(grid) - 2 and grid[row + 1][col]:
+                if row < rows - 1 and grid[row + 1][col] == 1:
                     square_peri -= 1
 
                 # check top neighbor
-                if row != 0 and grid[row - 1][col]:
+                if row > 0 and grid[row - 1][col]:
                     square_peri -= 1
-                print('sq =', square_peri)
+                
                 perimeter += square_peri
 
     return perimeter
