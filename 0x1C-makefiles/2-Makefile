@@ -1,7 +1,7 @@
 # containg variable and dependency tree
 
 CC = gcc
-SRC = $(wildcard *.c)
+SRC = main.c school.c
 OBJ = $(SRC:.c=.o)
 NAME = school
 
