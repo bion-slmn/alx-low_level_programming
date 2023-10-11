@@ -12,10 +12,12 @@ int advanced_binary(int *array, size_t size, int value)
 	size_t low, high;
 
 	low = 0;
-	high = size - 1;
 
 	if (array)
+	{
+		high = size - 1;
 		return (first_occur(array, low, high, value, size));
+	}
 	return (-1);
 }
 
