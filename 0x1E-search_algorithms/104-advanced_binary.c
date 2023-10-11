@@ -34,13 +34,13 @@ int first_occur(int *array, size_t low, size_t high, int value, size_t size)
 {
 	size_t mid;
 
-	if (low < high)
+	if (low <= high)
 	{
 		printf("Searching in array: ");
 		print_array(array, low, high);
 		mid = (low + high) / 2;
 
-		if ((value > array[mid - 1]) && array[mid] == value)
+		if ((value > array[mid - 1] || mid == 0) && array[mid] == value)
 			return (mid);
 
 		if (array[mid] == value)
