@@ -40,7 +40,7 @@ int first_occur(int *array, size_t low, size_t high, int value, size_t size)
 		print_array(array, low, high);
 		mid = (low + high) / 2;
 
-		if ((mid == 0 || value > array[mid - 1]) && array[mid] == value)
+		if ((value > array[mid - 1]) && array[mid] == value)
 			return (mid);
 
 		if (array[mid] == value)
