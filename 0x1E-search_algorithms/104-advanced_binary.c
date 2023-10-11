@@ -40,10 +40,14 @@ int first_occur(int *array, size_t low, size_t high, int value, size_t size)
 
 		if ((mid == 0 || value > array[mid - 1]) && array[mid] == value)
 			return (mid);
+
+		if (array[mid] == value)
+			high = mid;
 		else if (value > array[mid])
 			low = mid + 1;
 		else
 			high = mid - 1;
+
 		return (first_occur(array, low, high, value, size));
 	}
 
