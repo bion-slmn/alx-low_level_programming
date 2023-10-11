@@ -39,6 +39,8 @@ int first_occur(int *array, size_t low, size_t high, int value, size_t size)
 		printf("Searching in array: ");
 		print_array(array, low, high);
 		mid = (low + high) / 2;
+		if (mid == 0)
+			return (mid);
 
 		if ((value > array[mid - 1]) && array[mid] == value)
 			return (mid);
