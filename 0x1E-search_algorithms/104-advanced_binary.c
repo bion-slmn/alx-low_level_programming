@@ -48,7 +48,7 @@ int first_occur(int *array, size_t low, size_t high, int value, size_t size)
 		else if (value > array[mid])
 			low = mid + 1;
 		else
-			high = mid - 1;
+			high = mid;
 
 		return (first_occur(array, low, high, value, size));
 	}
